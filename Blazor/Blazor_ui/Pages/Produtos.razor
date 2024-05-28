@@ -1,0 +1,18 @@
+﻿@page "/Produtos"
+
+<h3>Produtos</h3>
+
+<TableComponent T="ProdutoDTO"></TableComponent>
+
+@code {
+
+	private IEnumerable<ProdutoDTO>? produtoDTO { get; set; }
+
+	private ProdutoService produtoService { get; set; } = new ProdutoService();
+
+	protected override async Task OnInitializedAsync()
+	{
+		produtoDTO = await produtoService.GetAll();
+		await base.OnInitializedAsync();
+	}
+}

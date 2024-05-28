@@ -1,0 +1,17 @@
+﻿@page "/Pedidos"
+
+<h3>Pedidos</h3>
+
+<TableComponent T="PedidoDTO"></TableComponent>
+
+@code {
+	public IEnumerable<PedidoDTO>? pedidoDTO { get; set; }
+
+	private PedidoService pedidoService { get; set; } = new PedidoService();
+
+	protected override async Task OnInitializedAsync()
+	{
+		pedidoDTO = await pedidoService.GetAll();
+		await base.OnInitializedAsync();
+	}
+}
