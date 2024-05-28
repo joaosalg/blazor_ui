@@ -1033,3 +1033,4 @@ C:\blazor_ui\Blazor\Blazor_ui\obj\Debug\net8.0\Blazor_ui.dll
 C:\blazor_ui\Blazor\Blazor_ui\obj\Debug\net8.0\refint\Blazor_ui.dll
 C:\blazor_ui\Blazor\Blazor_ui\obj\Debug\net8.0\Blazor_ui.pdb
 C:\blazor_ui\Blazor\Blazor_ui\obj\Debug\net8.0\ref\Blazor_ui.dll
+C:\blazor_ui\Blazor\Blazor_ui\obj\Debug\net8.0\Blazor_ui.sourcelink.json

@@ -2,12 +2,11 @@
 
 <h3>Pedidos</h3>
 
-<TableComponent T="PedidoDTO"></TableComponent>
+<TableComponent listT="pedidoDTO"></TableComponent>
 
+@inject PedidoService pedidoService;
 @code {
 	public IEnumerable<PedidoDTO>? pedidoDTO { get; set; }
-
-	private PedidoService pedidoService { get; set; } = new PedidoService();
 
 	protected override async Task OnInitializedAsync()
 	{

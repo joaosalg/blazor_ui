@@ -1,38 +1,50 @@
-﻿@typeparam T;
+﻿@using System.Reflection
+@typeparam T;
 
 <h3></h3>
 
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>#</th>
-			<th>Nome</th>
-			<th>Total</th>
+			@foreach (var coluna in listColumn)
+			{
+				<th>@coluna</th>
+			}
 		</tr>
 	</thead>
 	<tbody>
-		@if(listT != null) 
-		{
-		    @foreach (var listT in listT)
-		    {
-			    <tr>
-				    <th></th>
-				    <th></th>
-				    <th></th>
-			    </tr>
-		    }
-		}
+			@if (listT != null)
+			{
+				@foreach (var listT in listT)
+				{
+					<tr>
+					@foreach (var prop in listProperties)
+					{
+						<td>@prop.GetValue(listT)</td>
+					}
+					</tr>
+				}
+			}
 	</tbody>
 </table>
 
 @code {
 
-	[Parameter]
-	public IEnumerable<ProdutoDTO> produtoDTO { get; set; } = new List<ProdutoDTO>();
+	private List<string>? listColumn { get; set; }
+	private List<PropertyInfo>? listProperties { get; set; }
 
 	[Parameter]
-	public IEnumerable<PedidoDTO> pedidoDTO { get; set; } = new List<PedidoDTO>();
+	public IEnumerable<T>? listT { get; set; } = new List<T>();
 
-	[Parameter]
-	public IEnumerable<T> listT { get; set; } = new List<T>();			
+	protected override void OnParametersSet()
+	{
+		listColumn = typeof(T).getColumns();
+		listProperties = typeof(T).getProperties();
+		base.OnParametersSet();
+	}
+
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+	}
 }
